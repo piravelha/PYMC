@@ -1,0 +1,6 @@
+# PATH: load
+
+/tellraw @a {
+    "text": "Reloaded!",
+    "color": "green"
+}
