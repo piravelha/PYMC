@@ -25,9 +25,8 @@ The .mcpy files of your datapack are stored in the `data/python/functions` folde
 Every .mcpy file has to start out with a PATH comment, that specifies where in the datapack the function is compiled to. The PATH comment's path should not specify the namespace, it will generate them in the namespace specified in the compiler file.
 
 * Example (Will compile it to `NAMESPACE:load`):
-```
-# PATH: load
-```
+
+![image](https://github.com/piravelha/PYMC/assets/140568241/e31086cb-4219-476d-a730-69262bfb7c3a)
 
 # Basic Syntax
 
@@ -38,69 +37,19 @@ The syntax of PythonMC is pretty straightfoward, being very similar to Minecraft
 To run a basic slash command, all you have to do is write a slash `/`, followed by your command
 
 * Example:
-```mcpy
-# PATH: load
 
-/say Hello World!
-```
+![image](https://github.com/piravelha/PYMC/assets/140568241/e12ecf86-8b10-4c7a-bd43-7cd1f369585d)
+
 
 ## Linebreaks, EVERYWHERE!
 
 You can add linebreaks pretty much everywhere, without much restriction, here are a few examples:
 
-```
-# PATH: load
+![image](https://github.com/piravelha/PYMC/assets/140568241/cc5abc41-2e2b-4710-a30d-c2bef1270e85)
 
-/execute as 
-    @a[
-        tag = shouldGetSword
-    ] 
-    run give 
-    @s netherite_sword{
-        display: {
-            Name: '{
-                "text": "My Custom Sword",
-                "color": "dark_purple",
-                "bold": true,
-                "italic":false
-            }',
-            Lore: ['{
-                "text": "This is my very powerful custom sword",
-                "color": "gray",
-                "italic": false
-            }']
-        },
-        Enchantments:[
-            {id:"minecraft:sharpness",lvl:6s},
-            {id:"minecraft:fire_aspect",lvl:5s},
-            {id:"minecraft:looting",lvl:2s},
-            {id:"minecraft:unbreaking",lvl:4s}
-        ]
-    } 1
-```
+---
 
-```
-# PATH: load
-
-/tellraw @a [
-    {
-        "text": "Hello! ",
-        "color":"green"
-    },
-    {
-        "text": "How are you doing?",
-        "color":"aqua",
-        "hoverEvent": {
-            "action": "show_text",
-            "value": [{
-                "text":"This is a custom hover text!",
-                "italic": true,
-                "underlined": true
-            }]
-        }
-    }
-]
-```
+![image](https://github.com/piravelha/PYMC/assets/140568241/d34405cd-c180-451c-8947-17975ceb9bf0)
 
 ## Creating Functions
 
@@ -111,38 +60,21 @@ Inside the function you can write more slash commands as usual, and to call the 
 The function will be stored on the directory `NAMESPACE:function_name`, so if your function name is `test/my_function` it will be put inside a folder called `test`
 
 * Example:
-```mcpy
-# PATH: load
 
-/mcfunction my_function {
-    /say This code is being ran inside a function!
-}
+![image](https://github.com/piravelha/PYMC/assets/140568241/d6f4089a-07be-4f90-8305-ea0d4969806e)
 
-/function NAMESPACE:my_function
-```
 
 ## Macros
 
 Macros are a very useful feature available in the latest version of Minecraft, this guide will not be covering them, but they are available inside PythonMC.
 
 * Using a Macro Command inside a regular function file:
-```
-# PATH: macro_function
 
-/$say The value is $(value)
-```
+![image](https://github.com/piravelha/PYMC/assets/140568241/54ec4058-a7c7-4aa7-95ad-d6c6bd400684)
 
 * Using a Macro Command inside an mcfunction:
-```
-# PATH: load
 
-/mcfunction macro_test {
-    /$say The value is $(value)
-}
-
-/function NAMESPACE:macro_test 
-    {"value": 15}
-```
+![image](https://github.com/piravelha/PYMC/assets/140568241/e4b94898-f327-4991-b6fc-24a6abb12e1d)
 
 ## Percent (%) Functions (BETA)
 
@@ -160,24 +92,12 @@ The MacroScore % Function allows you to call a function passing one or more scor
 When acessing the scoreboard values as macros, the name of the macro will be integers starting at `1`, and increasing for every other additional score parsed as an argument
 
 ### Syntax:
-```
-/%macroscore NAMESPACE:<filepath> <selector> <scoreboard> | .. | <selector> <scoreboard>
-```
+![image](https://github.com/piravelha/PYMC/assets/140568241/2c54bb22-d949-40ad-abd2-c9ec7bf0e873)
 
 * Example:
 
-```
-# PATH: load
+![image](https://github.com/piravelha/PYMC/assets/140568241/bdcf0571-4c4f-48b6-b2f4-feb37bdc0456)
 
-/scoreboard objectives add Vars dummy
-/scoreboard players set .TestVar Vars 73
-
-/mcfunction print_test_var {
-    /$say TestVar is currently set to $(vars)
-}
-
-/%macroscore NAMESPACE:print_test_var .TestVar Vars
-```
 
 ## Timer
 
@@ -193,15 +113,12 @@ The syntax of the loop command is straight forward, by writing out `/%timer` fol
 * `0d`: `minecraft days`
 * `0h`: `hours`
 
-```
-/%timer <function> <delay>
-```
+
+![image](https://github.com/piravelha/PYMC/assets/140568241/4a07096c-a578-404b-bb17-f9c16264673d)
+
 
 > NOTE: The timer percent command currently does not support Macros
 
 ### Examples
-```
-# PATH: load
 
-/%timer namespace:timer_test 10s
-```
+![image](https://github.com/piravelha/PYMC/assets/140568241/70bfd521-8ebd-40ff-98ba-f25191841ad1)
