@@ -1,0 +1,10 @@
+# PATH: load
+
+/mcfunction print_reloaded {
+    /tellraw @a {
+        "text":"Reloaded!",
+        "color":"green"
+    }
+}
+
+/function namespace:print_reloaded
