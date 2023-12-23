@@ -151,19 +151,13 @@ Percent Functions are currently a BETA feature, and allow you to a few things th
 There are currently two working Percent Functions:
 
 * `/%macroscore`
-* `/%loop`
+* `/%timer`
 
 ### MacroScore
 
 The MacroScore % Function allows you to call a function passing one or more scoreboard values as macros directly, instead of needing to store them inside a data storage and using it.
 
-When acessing the scoreboard values as macros, the name of the macro will be the same as the objectives's, but with a few modifications:
-
-* Switches from `CamelCase` to `snake_case`
-* Adds a number followed by an `_` for macros with the same name
-    * Example: `score`, `score_2`, `score_3`, `..`
-
-> NOTE: MacroScores currently do not support line breaks within the MacroScore command, this will be fixed later
+When acessing the scoreboard values as macros, the name of the macro will be integers starting at `1`, and increasing for every other additional score parsed as an argument
 
 ### Syntax:
 ```
@@ -185,23 +179,29 @@ When acessing the scoreboard values as macros, the name of the macro will be the
 /%macroscore NAMESPACE:print_test_var .TestVar Vars
 ```
 
-## Loop
+## Timer
 
-The Loop % Function gives you the practicality of repeating a command multiple times, in a single line of code.
-
-The `/%loop` function has one Percent Parameter: `%(i)`, where `i` is the current index of the loop.
+The Timer % Function gives you more practicality than the `/schedule` command, since it allows you to maintain the entity that is running the command, in which the `/schedule` command just runs it on the server
 
 ### Syntax
 
-The syntax of the loop command is straight forward, by writing out `/%loop` followed by number of iterations, and a command after it
+The syntax of the loop command is straight forward, by writing out `/%timer` followed by the function to call, and a delay which can be specified in:
+
+* `0t`: `ticks`
+* `0s`: `seconds`
+* `0m`: `minutes`
+* `0d`: `minecraft days`
+* `0h`: `hours`
 
 ```
-/%loop <iterations> <command>
+/%timer <function> <delay>
 ```
+
+> NOTE: The timer percent command currently does not support Macros
 
 ### Examples
 ```
 # PATH: load
 
-/%loop 5 say Currently looping through index: %(i)
+/%timer namespace:timer_test 10s
 ```
